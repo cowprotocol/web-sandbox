@@ -4,7 +4,9 @@ import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import { Web3OnboardProvider } from "@web3-onboard/react";
-import { web3Onboard } from "./components/WalletDetails";
+import { createOnboard } from "./utils/createOnboard";
+
+export const web3Onboard = createOnboard();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

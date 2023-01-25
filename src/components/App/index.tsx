@@ -1,11 +1,11 @@
-import { WalletDetails } from "../WalletDetails";
+import { Navbar } from "../Navbar";
+import { Content } from "../Content";
 
 function App() {
   return (
     <div className="app">
-      <nav>
-        <WalletDetails />
-      </nav>
+      <Navbar />
+      <Content />
     </div>
   );
 }
