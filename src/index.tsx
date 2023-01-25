@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import { Web3OnboardProvider } from "@web3-onboard/react";
-import { createOnboard } from "./utils/createOnboard";
+import { createOnboard } from "./modules/onboard";
 
 export const web3Onboard = createOnboard();
 
