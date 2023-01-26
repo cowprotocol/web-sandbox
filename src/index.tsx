@@ -3,17 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
-import { Web3OnboardProvider } from "@web3-onboard/react";
-import { createOnboard } from "./modules/onboard";
-
-export const web3Onboard = createOnboard();
+import { Web3OnboardProvider } from "./components/Web3OnboardProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <StrictMode>
-    <Web3OnboardProvider web3Onboard={web3Onboard}>
+    <Web3OnboardProvider>
       <App />
     </Web3OnboardProvider>
   </StrictMode>
