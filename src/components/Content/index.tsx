@@ -18,7 +18,17 @@ export function Content() {
     <Wrapper>
       {wallet ? (
         <div>
-          <span>Connected wallet: {wallet.accounts[0].address}</span>
+          <div>
+            <span>Connected wallet: </span>
+            <strong>{wallet.accounts[0].address}</strong>
+          </div>
+
+          <div>
+            <span>Chain: </span>
+            <strong>
+              {wallet.chains[0].id} - {wallet.chains[0].namespace}
+            </strong>
+          </div>
         </div>
       ) : (
         "Not connected"
