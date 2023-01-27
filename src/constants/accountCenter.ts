@@ -1,6 +1,6 @@
 export const accountCenter = {
   desktop: {
-    enabled: false,
+    enabled: true,
   },
   mobile: {
     enabled: false,

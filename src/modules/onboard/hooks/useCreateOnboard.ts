@@ -5,13 +5,9 @@ import keystoneModule from "@web3-onboard/keystone";
 import ledgerModule from "@web3-onboard/ledger";
 import coinbaseWalletModule from "@web3-onboard/coinbase";
 
-import { accountCenter } from "../../constants/accountCenter";
-import { ethereumMainet, polygonMainnet } from "../../constants/chains";
-import {
-  appMetadata,
-  defaultWCOptions,
-  zenGoOptions,
-} from "../../constants/wallets";
+import { accountCenter } from "constants/accountCenter";
+import { ethereumMainet, polygonMainnet } from "constants/chains";
+import { appMetadata, defaultWCOptions, zenGoOptions } from "constants/wallets";
 
 export const useCreateOnboard = () => {
   const chains = [ethereumMainet, polygonMainnet];

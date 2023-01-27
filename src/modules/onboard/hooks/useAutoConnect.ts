@@ -1,11 +1,11 @@
-import { WALLET_STORAGE_KEY } from "../../constants/wallets";
-import { useWeb3Onboard } from "@web3-onboard/react/dist/context";
-import { useCallback } from "react";
+import { WALLET_STORAGE_KEY } from "constants/wallets";
+import { useConnectWallet } from "@web3-onboard/react";
+import { useMemo } from "react";
 
 export const useAutoConnect = () => {
-  const onboard = useWeb3Onboard();
+  const [, connect] = useConnectWallet();
 
-  const connect = useCallback(async () => {
+  useMemo(() => {
     const savedWallets = window.localStorage.getItem(WALLET_STORAGE_KEY);
 
     if (!savedWallets) {
@@ -15,11 +15,9 @@ export const useAutoConnect = () => {
     const [previouslyConnectedWallet] = JSON.parse(savedWallets);
 
     if (previouslyConnectedWallet) {
-      await onboard.connectWallet({
+      connect({
         autoSelect: { label: previouslyConnectedWallet, disableModals: true },
       });
     }
-  }, [onboard]);
-
-  connect();
+  }, [connect]);
 };
