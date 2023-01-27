@@ -1,18 +1,25 @@
-import { OnboardAPI } from "@web3-onboard/core";
 import { WALLET_STORAGE_KEY } from "../../constants/wallets";
+import { useWeb3Onboard } from "@web3-onboard/react/dist/context";
+import { useCallback } from "react";
 
-export const useAutoConnect = async (onboard: OnboardAPI) => {
-  const savedWallets = window.localStorage.getItem(WALLET_STORAGE_KEY);
+export const useAutoConnect = () => {
+  const onboard = useWeb3Onboard();
 
-  if (!savedWallets) {
-    return;
-  }
+  const connect = useCallback(async () => {
+    const savedWallets = window.localStorage.getItem(WALLET_STORAGE_KEY);
 
-  const [previouslyConnectedWallet] = JSON.parse(savedWallets);
+    if (!savedWallets) {
+      return;
+    }
 
-  if (previouslyConnectedWallet) {
-    await onboard.connectWallet({
-      autoSelect: { label: previouslyConnectedWallet, disableModals: true },
-    });
-  }
+    const [previouslyConnectedWallet] = JSON.parse(savedWallets);
+
+    if (previouslyConnectedWallet) {
+      await onboard.connectWallet({
+        autoSelect: { label: previouslyConnectedWallet, disableModals: true },
+      });
+    }
+  }, [onboard]);
+
+  connect();
 };

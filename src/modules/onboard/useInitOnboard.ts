@@ -5,8 +5,8 @@ import { useAutoConnect } from "./useAutoConnect";
 export const useInitOnboard = () => {
   const onboard = useCreateOnboard();
 
-  useSaveWallets(onboard);
-  useAutoConnect(onboard);
+  useSaveWallets();
+  useAutoConnect();
 
   return onboard;
 };

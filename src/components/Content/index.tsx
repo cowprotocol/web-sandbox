@@ -13,7 +13,7 @@ export function Content() {
   const wallets = useWallets();
   const [wallet] = wallets;
 
-  console.log("app state", appState);
+  console.log(appState);
 
   return (
     <Wrapper>
