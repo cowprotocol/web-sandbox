@@ -1,3 +1,5 @@
+export const WALLET_STORAGE_KEY = "connectedWallets";
+
 export const appMetadata = {
   name: "CoW Swap",
   icon: "/images/cow-logo.svg",

@@ -1,15 +1,20 @@
 import { useCallback } from "react";
 import { NotificationType } from "@web3-onboard/core/dist/types";
-import { web3Onboard } from "../Web3OnboardProvider";
+import { useNotifications } from "@web3-onboard/react";
 
 export const Notifications = () => {
-  const handleClick = useCallback((type: NotificationType) => {
-    web3Onboard.state.actions.customNotification({
-      type,
-      message: `This is ${type} notification type`,
-      autoDismiss: 0,
-    });
-  }, []);
+  const [, customNotification] = useNotifications();
+
+  const handleClick = useCallback(
+    (type: NotificationType) => {
+      customNotification({
+        type,
+        message: `This is ${type} notification type`,
+        autoDismiss: 0,
+      });
+    },
+    [customNotification]
+  );
 
   return (
     <div>
