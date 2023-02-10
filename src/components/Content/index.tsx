@@ -1,7 +1,5 @@
-import { useAppState } from "@web3-onboard/react";
-import { useWallets } from "@web3-onboard/react";
-import { Notifications } from "../Notifications";
 import styled from "styled-components";
+import { useAccount, useNetwork } from "wagmi";
 
 const Wrapper = styled.div`
   display: flex;
@@ -9,31 +7,24 @@ const Wrapper = styled.div`
 `;
 
 export function Content() {
-  const appState = useAppState();
-  const wallets = useWallets();
-  const [wallet] = wallets;
-
-  console.log(appState);
+  const { address, isConnected } = useAccount();
+  const { chain } = useNetwork();
 
   return (
     <Wrapper>
-      {wallet ? (
+      {isConnected ? (
         <div>
           <div>
             <span>Connected wallet: </span>
-            <strong>
-              {wallet.accounts[0].address} - {wallet.label}
-            </strong>
+            <strong>{address}</strong>
           </div>
 
           <div>
             <span>Chain: </span>
             <strong>
-              {wallet.chains[0].id} - {wallet.chains[0].namespace}
+              {chain?.id} - {chain?.name}
             </strong>
           </div>
-
-          <Notifications />
         </div>
       ) : (
         "Not connected"

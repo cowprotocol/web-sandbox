@@ -1,7 +1,18 @@
 import { ReactNode } from "react";
-import { Web3OnboardProvider as Provider } from "@web3-onboard/react";
-import { useCreateOnboard } from "../../modules/onboard/hooks/useCreateOnboard";
+import { WagmiConfig, createClient, configureChains, mainnet } from "wagmi";
+import { publicProvider } from "wagmi/providers/public";
+
+const { provider, webSocketProvider } = configureChains(
+  [mainnet],
+  [publicProvider()]
+);
+
+const client = createClient({
+  autoConnect: true,
+  provider,
+  webSocketProvider,
+});
 
 export function Web3OnboardProvider({ children }: { children: ReactNode }) {
-  return <Provider web3Onboard={useCreateOnboard()}>{children}</Provider>;
+  return <WagmiConfig client={client}>{children}</WagmiConfig>;
 }
