@@ -42,16 +42,18 @@ type ConnectType = {
 const Connect = ({ connector, name }: ConnectType) => {
   const { connect } = useConnect({ connector });
   const { disconnect } = useDisconnect();
-  const { address, isConnecting } = useAccount();
+  const { isConnecting, isConnected, connector: c } = useAccount();
+
+  const isThisConnected = isConnected && connector.id === c?.id;
 
   return (
     <button
       disabled={isConnecting}
-      onClick={() => (address ? disconnect() : connect())}
+      onClick={() => (isThisConnected ? disconnect() : connect())}
     >
       {isConnecting
         ? "connecting"
-        : address
+        : isThisConnected
         ? "disconnect"
         : `Connect with ${name}`}
     </button>
