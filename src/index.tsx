@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
-import { Web3OnboardProvider } from "./components/Web3OnboardProvider";
+import { Web3Provider } from "./components/Web3Provider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,9 +11,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <StrictMode>
-    <Web3OnboardProvider>
+    <Web3Provider>
       <App />
-    </Web3OnboardProvider>
+    </Web3Provider>
   </StrictMode>
 );
 

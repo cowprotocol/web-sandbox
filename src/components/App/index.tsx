@@ -1,9 +1,8 @@
 import { Navbar } from "../Navbar";
 import { Content } from "../Content";
-import { OnboardUpdater } from "../../modules/onboard/updater";
 
 const Updaters = () => {
-  return <OnboardUpdater />;
+  return null;
 };
 
 function App() {
