@@ -1,4 +1,3 @@
-import { WalletDetails } from "../WalletDetails";
 import styled from "styled-components";
 
 const Wrapper = styled.nav`
@@ -10,9 +9,5 @@ const Wrapper = styled.nav`
 `;
 
 export function Navbar() {
-  return (
-    <Wrapper>
-      <WalletDetails />
-    </Wrapper>
-  );
+  return <Wrapper>Navbar</Wrapper>;
 }

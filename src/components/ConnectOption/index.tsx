@@ -19,6 +19,7 @@ const ConnectButton = styled.button`
   width: auto;
   margin-right: 10px;
   cursor: pointer;
+  margin-bottom: 10px;
 
   img {
     margin-right: 5px;

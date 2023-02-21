@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { useAccount, useNetwork } from "wagmi";
+import { WalletDetails } from "../WalletDetails";
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   padding: 1rem;
 `;
 
@@ -12,23 +14,27 @@ export function Content() {
 
   return (
     <Wrapper>
-      {isConnected ? (
-        <div>
-          <div>
-            <span>Connected wallet: </span>
-            <strong>{address}</strong>
-          </div>
+      <WalletDetails />
 
+      <div>
+        {isConnected ? (
           <div>
-            <span>Chain: </span>
-            <strong>
-              {chain?.id} - {chain?.name}
-            </strong>
+            <div>
+              <span>Connected wallet: </span>
+              <strong>{address}</strong>
+            </div>
+
+            <div>
+              <span>Chain: </span>
+              <strong>
+                {chain?.id} - {chain?.name}
+              </strong>
+            </div>
           </div>
-        </div>
-      ) : (
-        "Not connected"
-      )}
+        ) : (
+          "Not connected"
+        )}
+      </div>
     </Wrapper>
   );
 }
