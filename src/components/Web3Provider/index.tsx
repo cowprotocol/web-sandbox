@@ -13,6 +13,6 @@ const client = createClient({
   webSocketProvider,
 });
 
-export function Web3OnboardProvider({ children }: { children: ReactNode }) {
+export function Web3Provider({ children }: { children: ReactNode }) {
   return <WagmiConfig client={client}>{children}</WagmiConfig>;
 }
